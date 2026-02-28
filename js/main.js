@@ -137,7 +137,6 @@
         return;
       }
 
-      // Email validation
       var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         formFeedback.textContent = 'Por favor, informe um e-mail válido.';
@@ -145,7 +144,6 @@
         return;
       }
 
-      // Simulate form submission
       var submitBtn = contactForm.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Enviando...';
@@ -164,7 +162,7 @@
     });
   }
 
-  // ---------- Staggered Reveal for Cards & Elements ----------
+  // ---------- Staggered Reveal for Cards ----------
   var cards = document.querySelectorAll('.card.reveal');
   cards.forEach(function (card, index) {
     card.style.transitionDelay = (index * 0.1) + 's';
@@ -175,22 +173,66 @@
     item.style.transitionDelay = (index * 0.1) + 's';
   });
 
-  // Staggered reveal for hotpage specs
-  var specs = document.querySelectorAll('.hotpage__spec');
-  specs.forEach(function (spec, index) {
-    spec.style.transitionDelay = (index * 0.08) + 's';
-  });
+  // ---------- Building Animation ----------
+  var buildingAnim = document.getElementById('building-anim');
 
-  // Staggered reveal for hotpage features
-  var features = document.querySelectorAll('.hotpage__feature');
-  features.forEach(function (feature, index) {
-    feature.style.transitionDelay = (index * 0.06) + 's';
-  });
+  if (buildingAnim) {
+    var blocks = buildingAnim.querySelectorAll('.building-anim__block');
+    var roofLeft = buildingAnim.querySelector('.building-anim__roof-left');
+    var roofRight = buildingAnim.querySelector('.building-anim__roof-right');
+    var labels = buildingAnim.querySelectorAll('.building-anim__label');
+    var animStarted = false;
 
-  // Staggered reveal for hotpage timeline steps
-  var steps = document.querySelectorAll('.hotpage__step');
-  steps.forEach(function (step, index) {
-    step.style.transitionDelay = (index * 0.15) + 's';
-  });
+    // Label activation thresholds (based on block delays)
+    var labelThresholds = [0.1, 1.3, 3.7, 6.2];
+
+    function startBuildingAnimation() {
+      if (animStarted) return;
+      animStarted = true;
+
+      // Drop blocks one by one with their CSS delay
+      blocks.forEach(function (block) {
+        var delay = parseFloat(block.style.getPropertyValue('--delay')) * 1000;
+        setTimeout(function () {
+          block.classList.add('dropped');
+        }, delay);
+      });
+
+      // Drop roof pieces
+      if (roofLeft) {
+        var roofLeftDelay = parseFloat(roofLeft.style.getPropertyValue('--delay')) * 1000;
+        setTimeout(function () {
+          roofLeft.classList.add('dropped');
+        }, roofLeftDelay);
+      }
+
+      if (roofRight) {
+        var roofRightDelay = parseFloat(roofRight.style.getPropertyValue('--delay')) * 1000;
+        setTimeout(function () {
+          roofRight.classList.add('dropped');
+        }, roofRightDelay);
+      }
+
+      // Activate labels at the right time
+      labels.forEach(function (label, index) {
+        var threshold = labelThresholds[index] * 1000;
+        setTimeout(function () {
+          label.classList.add('active');
+        }, threshold);
+      });
+    }
+
+    // Trigger animation when section is in view
+    function checkBuildingInView() {
+      if (animStarted) return;
+      var rect = buildingAnim.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 200) {
+        startBuildingAnimation();
+      }
+    }
+
+    window.addEventListener('scroll', checkBuildingInView, { passive: true });
+    checkBuildingInView();
+  }
 
 })();

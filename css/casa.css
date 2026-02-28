@@ -1,0 +1,446 @@
+/* ============================================
+   Casa à Venda — Styles
+   ============================================ */
+
+/* Header always dark on this page */
+.header--casa {
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ========== HERO ========== */
+.casa-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.casa-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(27, 138, 122, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(27, 138, 122, 0.04) 0%, transparent 50%);
+}
+
+.casa-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 80px 0;
+}
+
+.casa-hero__badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid rgba(27, 138, 122, 0.3);
+  padding: 10px 24px;
+  margin-bottom: 32px;
+}
+
+.casa-hero__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-white);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.casa-hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+/* ========== GALERIA ========== */
+.casa-galeria {
+  background-color: var(--color-white);
+  padding-top: 80px;
+}
+
+.casa-galeria__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 12px;
+}
+
+.casa-galeria__side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+}
+
+.casa-galeria__img {
+  border-radius: 6px;
+}
+
+.casa-galeria__img--main {
+  min-height: 420px;
+}
+
+.casa-galeria__side .casa-galeria__img {
+  min-height: 200px;
+}
+
+/* ========== SOBRE O IMÓVEL ========== */
+.casa-sobre {
+  background-color: var(--color-white);
+}
+
+/* Specs */
+.casa-specs {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  margin-bottom: 72px;
+}
+
+.casa-spec {
+  text-align: center;
+  padding: 28px 16px;
+  background-color: var(--color-off-white);
+  border: 1px solid var(--color-gray-lighter);
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.casa-spec:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+  transform: translateY(-4px);
+}
+
+.casa-spec__icon {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 14px;
+  color: var(--color-accent);
+}
+
+.casa-spec__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.casa-spec__value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-graphite);
+  margin-bottom: 4px;
+}
+
+.casa-spec__label {
+  font-size: 0.75rem;
+  color: var(--color-gray);
+  font-weight: 500;
+}
+
+/* Description */
+.casa-descricao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.casa-descricao__col h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-graphite);
+  margin-bottom: 20px;
+}
+
+.casa-descricao__col p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--color-gray);
+  margin-bottom: 16px;
+}
+
+.casa-ambientes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.casa-ambientes li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.casa-ambientes svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ========== ACABAMENTOS ========== */
+.casa-acabamentos {
+  background-color: var(--color-off-white);
+}
+
+.casa-acabamentos__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.casa-acabamento {
+  background-color: var(--color-white);
+  padding: 36px 28px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.casa-acabamento:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
+}
+
+.casa-acabamento__icon {
+  width: 40px;
+  height: 40px;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.casa-acabamento__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.casa-acabamento h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-graphite);
+  margin-bottom: 8px;
+}
+
+.casa-acabamento p {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--color-gray);
+}
+
+/* ========== TIMELINE ========== */
+.casa-progresso {
+  background-color: var(--color-white);
+}
+
+.casa-timeline {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.casa-timeline__step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.casa-timeline__dot {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  box-shadow: 0 4px 16px rgba(27, 138, 122, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.casa-timeline__dot svg {
+  width: 20px;
+  height: 20px;
+}
+
+.casa-timeline__line {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-accent);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.casa-timeline__step:last-child .casa-timeline__line {
+  display: none;
+}
+
+.casa-timeline__step h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-graphite);
+  margin-bottom: 4px;
+}
+
+.casa-timeline__step p {
+  font-size: 0.8125rem;
+  color: var(--color-gray);
+}
+
+/* ========== LOCALIZAÇÃO ========== */
+.casa-localizacao {
+  background-color: var(--color-off-white);
+}
+
+.casa-localizacao__features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.casa-localizacao__features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.casa-localizacao__features svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.casa-localizacao__map-placeholder {
+  height: 400px;
+}
+
+/* ========== CTA BUTTONS ========== */
+.casa-cta__buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn--whatsapp {
+  background-color: #25D366;
+  color: var(--color-white);
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+}
+
+.btn--whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.45);
+  background-color: #20bd5a;
+}
+
+.btn--whatsapp svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .casa-specs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .casa-descricao {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .casa-galeria__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .casa-galeria__img--main {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .casa-hero {
+    min-height: 60vh;
+  }
+
+  .casa-specs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .casa-acabamentos__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .casa-timeline {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    padding-left: 40px;
+  }
+
+  .casa-timeline__step {
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .casa-timeline__dot {
+    margin: 0;
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .casa-timeline__line {
+    top: 48px;
+    left: 20px;
+    width: 2px;
+    height: calc(100% + 24px);
+  }
+
+  .casa-cta__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .casa-specs {
+    grid-template-columns: 1fr;
+  }
+
+  .casa-hero__content {
+    padding: 60px 0;
+  }
+}
