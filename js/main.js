@@ -164,7 +164,7 @@
     });
   }
 
-  // ---------- Staggered Reveal for Cards ----------
+  // ---------- Staggered Reveal for Cards & Elements ----------
   var cards = document.querySelectorAll('.card.reveal');
   cards.forEach(function (card, index) {
     card.style.transitionDelay = (index * 0.1) + 's';
@@ -173,6 +173,24 @@
   var diferenciais = document.querySelectorAll('.diferencial.reveal');
   diferenciais.forEach(function (item, index) {
     item.style.transitionDelay = (index * 0.1) + 's';
+  });
+
+  // Staggered reveal for hotpage specs
+  var specs = document.querySelectorAll('.hotpage__spec');
+  specs.forEach(function (spec, index) {
+    spec.style.transitionDelay = (index * 0.08) + 's';
+  });
+
+  // Staggered reveal for hotpage features
+  var features = document.querySelectorAll('.hotpage__feature');
+  features.forEach(function (feature, index) {
+    feature.style.transitionDelay = (index * 0.06) + 's';
+  });
+
+  // Staggered reveal for hotpage timeline steps
+  var steps = document.querySelectorAll('.hotpage__step');
+  steps.forEach(function (step, index) {
+    step.style.transitionDelay = (index * 0.15) + 's';
   });
 
 })();
