@@ -120,111 +120,135 @@
     </div>
   </section>
 
-  <!-- ========== ANIMAÇÃO CONSTRUÇÃO ========== -->
-  <section class="section building-section" id="construcao">
+  <!-- ========== ANIMAÇÃO RASCUNHO / SKETCH ========== -->
+  <section class="section sketch-section" id="construcao">
     <div class="container">
       <div class="section__header">
         <span class="section__label reveal">Construção</span>
         <h2 class="section__title section__title--center reveal">
-          Tijolo por tijolo,<br>
-          <span class="accent">construímos seu sonho.</span>
+          Do rascunho à realidade,<br>
+          <span class="accent">cada traço importa.</span>
         </h2>
         <p class="section__subtitle reveal">
-          Cada etapa da obra é executada com precisão cirúrgica. Veja como damos vida ao seu projeto.
+          Cada projeto nasce como um esboço e ganha vida com precisão de engenharia. Acompanhe o processo.
         </p>
       </div>
 
-      <div class="building-anim" id="building-anim">
-        <!-- Chão -->
-        <div class="building-anim__ground"></div>
+      <!-- SVG Sketch animado -->
+      <div class="sketch-canvas" id="sketch-canvas">
+        <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg">
 
-        <!-- Casa animada com blocos -->
-        <div class="building-anim__house">
+          <!-- FASE 1: Linhas de rascunho soltas (rough sketch) -->
+          <!-- Chão rascunho -->
+          <path class="sketch-line sketch-line--rough" d="M80 310 Q200 312 350 308 Q500 305 620 310" style="--dash-length: 600; --draw-duration: 1.2s; --draw-delay: 0s;" />
+          <path class="sketch-line sketch-line--rough" d="M75 314 Q250 316 400 312 Q550 309 625 313" style="--dash-length: 600; --draw-duration: 1s; --draw-delay: 0.2s;" />
+
+          <!-- Parede esquerda rascunho -->
+          <path class="sketch-line sketch-line--rough" d="M145 310 Q143 240 147 170 Q145 130 148 105" style="--dash-length: 300; --draw-duration: 1s; --draw-delay: 0.6s;" />
+
+          <!-- Parede direita rascunho -->
+          <path class="sketch-line sketch-line--rough" d="M555 310 Q557 250 553 180 Q555 140 552 105" style="--dash-length: 300; --draw-duration: 1s; --draw-delay: 0.8s;" />
+
+          <!-- Telhado rascunho -->
+          <path class="sketch-line sketch-line--rough" d="M145 107 Q250 48 350 30 Q450 48 555 107" style="--dash-length: 500; --draw-duration: 1.2s; --draw-delay: 1s;" />
+
+          <!-- FASE 2: Linhas mais definidas (planta técnica) -->
+          <!-- Chão firme -->
+          <line class="sketch-line" x1="100" y1="310" x2="600" y2="310" style="--dash-length: 500; --draw-duration: 0.8s; --draw-delay: 2s;" />
+
           <!-- Fundação -->
-          <div class="building-anim__row building-anim__row--foundation">
-            <div class="building-anim__block" style="--delay: 0.1s; --from-x: -40px;"></div>
-            <div class="building-anim__block" style="--delay: 0.25s; --from-x: 20px;"></div>
-            <div class="building-anim__block" style="--delay: 0.4s; --from-x: -30px;"></div>
-            <div class="building-anim__block" style="--delay: 0.55s; --from-x: 50px;"></div>
-            <div class="building-anim__block" style="--delay: 0.7s; --from-x: -10px;"></div>
-            <div class="building-anim__block" style="--delay: 0.85s; --from-x: 30px;"></div>
-            <div class="building-anim__block" style="--delay: 1.0s; --from-x: -50px;"></div>
-            <div class="building-anim__block" style="--delay: 1.15s; --from-x: 40px;"></div>
-          </div>
+          <rect class="sketch-line--fill" x="120" y="300" width="460" height="12" rx="1" style="--draw-delay: 2.2s;" />
+          <line class="sketch-line" x1="120" y1="300" x2="580" y2="300" style="--dash-length: 460; --draw-duration: 0.6s; --draw-delay: 2.2s;" />
+          <line class="sketch-line" x1="120" y1="312" x2="580" y2="312" style="--dash-length: 460; --draw-duration: 0.6s; --draw-delay: 2.3s;" />
 
-          <!-- Parede 1 -->
-          <div class="building-anim__row">
-            <div class="building-anim__block" style="--delay: 1.3s; --from-x: 30px;"></div>
-            <div class="building-anim__block" style="--delay: 1.45s; --from-x: -20px;"></div>
-            <div class="building-anim__block" style="--delay: 1.6s; --from-x: 40px;"></div>
-            <div class="building-anim__block" style="--delay: 1.75s; --from-x: -50px;"></div>
-            <div class="building-anim__block" style="--delay: 1.9s; --from-x: 10px;"></div>
-            <div class="building-anim__block" style="--delay: 2.05s; --from-x: -30px;"></div>
-            <div class="building-anim__block" style="--delay: 2.2s; --from-x: 50px;"></div>
-            <div class="building-anim__block" style="--delay: 2.35s; --from-x: -40px;"></div>
-          </div>
+          <!-- Parede esquerda -->
+          <line class="sketch-line" x1="150" y1="300" x2="150" y2="110" style="--dash-length: 200; --draw-duration: 1s; --draw-delay: 3s;" />
 
-          <!-- Parede 2 com janela -->
-          <div class="building-anim__row">
-            <div class="building-anim__block" style="--delay: 2.5s; --from-x: -20px;"></div>
-            <div class="building-anim__block" style="--delay: 2.65s; --from-x: 30px;"></div>
-            <div class="building-anim__block building-anim__block--window" style="--delay: 2.8s; --from-x: -40px;"></div>
-            <div class="building-anim__block building-anim__block--window" style="--delay: 2.95s; --from-x: 50px;"></div>
-            <div class="building-anim__block building-anim__block--window" style="--delay: 3.1s; --from-x: -10px;"></div>
-            <div class="building-anim__block building-anim__block--window" style="--delay: 3.25s; --from-x: 20px;"></div>
-            <div class="building-anim__block" style="--delay: 3.4s; --from-x: -50px;"></div>
-            <div class="building-anim__block" style="--delay: 3.55s; --from-x: 40px;"></div>
-          </div>
+          <!-- Parede direita -->
+          <line class="sketch-line" x1="550" y1="300" x2="550" y2="110" style="--dash-length: 200; --draw-duration: 1s; --draw-delay: 3.2s;" />
 
-          <!-- Parede 3 -->
-          <div class="building-anim__row">
-            <div class="building-anim__block" style="--delay: 3.7s; --from-x: 40px;"></div>
-            <div class="building-anim__block" style="--delay: 3.85s; --from-x: -30px;"></div>
-            <div class="building-anim__block" style="--delay: 4.0s; --from-x: 10px;"></div>
-            <div class="building-anim__block" style="--delay: 4.15s; --from-x: -50px;"></div>
-            <div class="building-anim__block" style="--delay: 4.3s; --from-x: 30px;"></div>
-            <div class="building-anim__block" style="--delay: 4.45s; --from-x: -20px;"></div>
-            <div class="building-anim__block" style="--delay: 4.6s; --from-x: 50px;"></div>
-            <div class="building-anim__block" style="--delay: 4.75s; --from-x: -40px;"></div>
-          </div>
+          <!-- Divisórias internas -->
+          <line class="sketch-line" x1="300" y1="300" x2="300" y2="150" style="--dash-length: 160; --draw-duration: 0.8s; --draw-delay: 3.6s;" />
+          <line class="sketch-line" x1="420" y1="300" x2="420" y2="200" style="--dash-length: 110; --draw-duration: 0.7s; --draw-delay: 3.8s;" />
+          <line class="sketch-line" x1="300" y1="200" x2="420" y2="200" style="--dash-length: 120; --draw-duration: 0.6s; --draw-delay: 4s;" />
 
-          <!-- Parede 4 com janelas -->
-          <div class="building-anim__row">
-            <div class="building-anim__block" style="--delay: 4.9s; --from-x: -10px;"></div>
-            <div class="building-anim__block" style="--delay: 5.05s; --from-x: 40px;"></div>
-            <div class="building-anim__block building-anim__block--window" style="--delay: 5.2s; --from-x: -30px;"></div>
-            <div class="building-anim__block building-anim__block--window" style="--delay: 5.35s; --from-x: 20px;"></div>
-            <div class="building-anim__block building-anim__block--window" style="--delay: 5.5s; --from-x: -50px;"></div>
-            <div class="building-anim__block building-anim__block--window" style="--delay: 5.65s; --from-x: 50px;"></div>
-            <div class="building-anim__block" style="--delay: 5.8s; --from-x: -20px;"></div>
-            <div class="building-anim__block" style="--delay: 5.95s; --from-x: 30px;"></div>
-          </div>
+          <!-- Teto (laje) -->
+          <line class="sketch-line" x1="150" y1="150" x2="300" y2="150" style="--dash-length: 160; --draw-duration: 0.6s; --draw-delay: 4.2s;" />
+          <line class="sketch-line" x1="300" y1="110" x2="550" y2="110" style="--dash-length: 260; --draw-duration: 0.7s; --draw-delay: 4.4s;" />
+          <line class="sketch-line" x1="150" y1="110" x2="300" y2="110" style="--dash-length: 160; --draw-duration: 0.6s; --draw-delay: 4.4s;" />
 
+          <!-- FASE 3: Detalhes — janelas, porta, telhado -->
           <!-- Telhado -->
-          <div class="building-anim__roof">
-            <div class="building-anim__roof-left" style="--delay: 6.2s;"></div>
-            <div class="building-anim__roof-right" style="--delay: 6.5s;"></div>
-          </div>
-        </div>
+          <path class="sketch-line sketch-line--accent" d="M130 112 L350 30 L570 112" style="--dash-length: 500; --draw-duration: 1.2s; --draw-delay: 5.2s;" />
+          <line class="sketch-line sketch-line--accent" x1="130" y1="112" x2="570" y2="112" style="--dash-length: 440; --draw-duration: 0.6s; --draw-delay: 5.6s;" />
 
-        <!-- Etiquetas das etapas -->
-        <div class="building-anim__labels">
-          <div class="building-anim__label" style="--delay: 0.5s;">
-            <span class="building-anim__label-dot"></span>
-            Fundação
-          </div>
-          <div class="building-anim__label" style="--delay: 2.0s;">
-            <span class="building-anim__label-dot"></span>
-            Alvenaria
-          </div>
-          <div class="building-anim__label" style="--delay: 4.0s;">
-            <span class="building-anim__label-dot"></span>
-            Estrutura
-          </div>
-          <div class="building-anim__label" style="--delay: 6.2s;">
-            <span class="building-anim__label-dot"></span>
-            Cobertura
-          </div>
+          <!-- Preenchimento telhado -->
+          <polygon class="sketch-line--fill-accent" points="130,112 350,30 570,112" style="--draw-delay: 5.8s;" />
+
+          <!-- Porta principal -->
+          <rect class="sketch-line--fill" x="200" y="230" width="50" height="70" rx="2" style="--draw-delay: 6s;" />
+          <rect class="sketch-line" x="200" y="230" width="50" height="70" rx="2" style="--dash-length: 260; --draw-duration: 0.8s; --draw-delay: 6s;" />
+          <!-- Maçaneta -->
+          <circle class="sketch-line" cx="240" cy="268" r="3" style="--dash-length: 20; --draw-duration: 0.3s; --draw-delay: 6.4s;" />
+
+          <!-- Janela esquerda -->
+          <rect class="sketch-line--fill-accent" x="335" y="230" width="55" height="40" rx="1" style="--draw-delay: 6.2s;" />
+          <rect class="sketch-line" x="335" y="230" width="55" height="40" rx="1" style="--dash-length: 200; --draw-duration: 0.6s; --draw-delay: 6.2s;" />
+          <line class="sketch-line" x1="362" y1="230" x2="362" y2="270" style="--dash-length: 40; --draw-duration: 0.3s; --draw-delay: 6.5s;" />
+          <line class="sketch-line" x1="335" y1="250" x2="390" y2="250" style="--dash-length: 55; --draw-duration: 0.3s; --draw-delay: 6.5s;" />
+
+          <!-- Janela direita superior -->
+          <rect class="sketch-line--fill-accent" x="450" y="140" width="60" height="40" rx="1" style="--draw-delay: 6.4s;" />
+          <rect class="sketch-line" x="450" y="140" width="60" height="40" rx="1" style="--dash-length: 210; --draw-duration: 0.6s; --draw-delay: 6.4s;" />
+          <line class="sketch-line" x1="480" y1="140" x2="480" y2="180" style="--dash-length: 40; --draw-duration: 0.3s; --draw-delay: 6.7s;" />
+          <line class="sketch-line" x1="450" y1="160" x2="510" y2="160" style="--dash-length: 60; --draw-duration: 0.3s; --draw-delay: 6.7s;" />
+
+          <!-- Janela esquerda superior -->
+          <rect class="sketch-line--fill-accent" x="180" y="140" width="55" height="40" rx="1" style="--draw-delay: 6.6s;" />
+          <rect class="sketch-line" x="180" y="140" width="55" height="40" rx="1" style="--dash-length: 200; --draw-duration: 0.6s; --draw-delay: 6.6s;" />
+          <line class="sketch-line" x1="207" y1="140" x2="207" y2="180" style="--dash-length: 40; --draw-duration: 0.3s; --draw-delay: 6.9s;" />
+          <line class="sketch-line" x1="180" y1="160" x2="235" y2="160" style="--dash-length: 55; --draw-duration: 0.3s; --draw-delay: 6.9s;" />
+
+          <!-- FASE 4: Cotas e medidas (detalhe técnico) -->
+          <!-- Cota horizontal inferior -->
+          <line class="sketch-line" x1="150" y1="335" x2="550" y2="335" style="--dash-length: 400; --draw-duration: 0.8s; --draw-delay: 7.5s;" stroke-dasharray="4 3" />
+          <line class="sketch-line" x1="150" y1="330" x2="150" y2="340" style="--dash-length: 10; --draw-duration: 0.2s; --draw-delay: 7.5s;" />
+          <line class="sketch-line" x1="550" y1="330" x2="550" y2="340" style="--dash-length: 10; --draw-duration: 0.2s; --draw-delay: 7.5s;" />
+
+          <!-- Cota vertical -->
+          <line class="sketch-line" x1="105" y1="110" x2="105" y2="310" style="--dash-length: 200; --draw-duration: 0.8s; --draw-delay: 7.8s;" stroke-dasharray="4 3" />
+          <line class="sketch-line" x1="100" y1="110" x2="110" y2="110" style="--dash-length: 10; --draw-duration: 0.2s; --draw-delay: 7.8s;" />
+          <line class="sketch-line" x1="100" y1="310" x2="110" y2="310" style="--dash-length: 10; --draw-duration: 0.2s; --draw-delay: 7.8s;" />
+
+          <!-- Texto de medidas -->
+          <text class="sketch-line" x="340" y="355" text-anchor="middle" font-family="Montserrat" font-size="11" font-weight="500" fill="#8a817c" style="--dash-length: 100; --draw-duration: 0.5s; --draw-delay: 8.2s;">12.00 m</text>
+          <text class="sketch-line" x="90" y="215" text-anchor="middle" font-family="Montserrat" font-size="11" font-weight="500" fill="#8a817c" transform="rotate(-90, 90, 215)" style="--dash-length: 100; --draw-duration: 0.5s; --draw-delay: 8.4s;">6.00 m</text>
+
+          <!-- Árvore decorativa -->
+          <ellipse class="sketch-line--fill" cx="640" cy="278" rx="22" ry="30" style="--draw-delay: 8.5s;" fill="#b5ada6" opacity="0.3" />
+          <line class="sketch-line" x1="640" y1="308" x2="640" y2="270" style="--dash-length: 40; --draw-duration: 0.4s; --draw-delay: 8.5s;" />
+          <ellipse class="sketch-line" cx="640" cy="278" rx="22" ry="30" style="--dash-length: 180; --draw-duration: 0.6s; --draw-delay: 8.6s;" />
+
+        </svg>
+      </div>
+
+      <!-- Etapas do desenho -->
+      <div class="sketch-stages reveal">
+        <div class="sketch-stage" data-stage="0">
+          <span class="sketch-stage__dot"></span>
+          <span class="sketch-stage__label">Esboço</span>
+        </div>
+        <div class="sketch-stage" data-stage="1">
+          <span class="sketch-stage__dot"></span>
+          <span class="sketch-stage__label">Estrutura</span>
+        </div>
+        <div class="sketch-stage" data-stage="2">
+          <span class="sketch-stage__dot"></span>
+          <span class="sketch-stage__label">Detalhes</span>
+        </div>
+        <div class="sketch-stage" data-stage="3">
+          <span class="sketch-stage__dot"></span>
+          <span class="sketch-stage__label">Projeto</span>
         </div>
       </div>
     </div>

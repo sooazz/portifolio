@@ -173,66 +173,75 @@
     item.style.transitionDelay = (index * 0.1) + 's';
   });
 
-  // ---------- Building Animation ----------
-  var buildingAnim = document.getElementById('building-anim');
+  // ---------- Sketch / Blueprint Animation ----------
+  var sketchCanvas = document.getElementById('sketch-canvas');
 
-  if (buildingAnim) {
-    var blocks = buildingAnim.querySelectorAll('.building-anim__block');
-    var roofLeft = buildingAnim.querySelector('.building-anim__roof-left');
-    var roofRight = buildingAnim.querySelector('.building-anim__roof-right');
-    var labels = buildingAnim.querySelectorAll('.building-anim__label');
+  if (sketchCanvas) {
+    var stages = document.querySelectorAll('.sketch-stage');
     var animStarted = false;
 
-    // Label activation thresholds (based on block delays)
-    var labelThresholds = [0.1, 1.3, 3.7, 6.2];
+    // Stage activation delays (in seconds)
+    var stageDelays = [0, 2, 5, 7.5];
 
-    function startBuildingAnimation() {
+    function startSketchAnimation() {
       if (animStarted) return;
       animStarted = true;
 
-      // Drop blocks one by one with their CSS delay
-      blocks.forEach(function (block) {
-        var delay = parseFloat(block.style.getPropertyValue('--delay')) * 1000;
-        setTimeout(function () {
-          block.classList.add('dropped');
-        }, delay);
-      });
+      // Add animate class to trigger all CSS transitions
+      sketchCanvas.classList.add('animate');
 
-      // Drop roof pieces
-      if (roofLeft) {
-        var roofLeftDelay = parseFloat(roofLeft.style.getPropertyValue('--delay')) * 1000;
+      // Activate stage labels
+      stages.forEach(function (stage, index) {
         setTimeout(function () {
-          roofLeft.classList.add('dropped');
-        }, roofLeftDelay);
-      }
-
-      if (roofRight) {
-        var roofRightDelay = parseFloat(roofRight.style.getPropertyValue('--delay')) * 1000;
-        setTimeout(function () {
-          roofRight.classList.add('dropped');
-        }, roofRightDelay);
-      }
-
-      // Activate labels at the right time
-      labels.forEach(function (label, index) {
-        var threshold = labelThresholds[index] * 1000;
-        setTimeout(function () {
-          label.classList.add('active');
-        }, threshold);
+          stage.classList.add('active');
+        }, stageDelays[index] * 1000);
       });
     }
 
     // Trigger animation when section is in view
-    function checkBuildingInView() {
+    function checkSketchInView() {
       if (animStarted) return;
-      var rect = buildingAnim.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 200) {
-        startBuildingAnimation();
+      var rect = sketchCanvas.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 150) {
+        startSketchAnimation();
       }
     }
 
-    window.addEventListener('scroll', checkBuildingInView, { passive: true });
-    checkBuildingInView();
+    window.addEventListener('scroll', checkSketchInView, { passive: true });
+    checkSketchInView();
+  }
+
+  // ---------- Casa.html: Photo Gallery Lightbox ----------
+  var galleryItems = document.querySelectorAll('.casa-galeria__item');
+  var lightbox = document.getElementById('lightbox');
+
+  if (galleryItems.length > 0 && lightbox) {
+    var lightboxClose = lightbox.querySelector('.lightbox__close');
+    var lightboxContent = lightbox.querySelector('.lightbox__content');
+
+    galleryItems.forEach(function (item) {
+      item.addEventListener('click', function () {
+        var clone = item.querySelector('.image-placeholder').cloneNode(true);
+        lightboxContent.innerHTML = '';
+        lightboxContent.appendChild(clone);
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', function () {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
   }
 
 })();

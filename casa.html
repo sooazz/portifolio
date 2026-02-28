@@ -35,7 +35,9 @@
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link">Início</a></li>
           <li><a href="#sobre-imovel" class="nav__link">O Imóvel</a></li>
+          <li><a href="#galeria" class="nav__link">Galeria</a></li>
           <li><a href="#acabamentos" class="nav__link">Acabamentos</a></li>
+          <li><a href="#planta" class="nav__link">Planta</a></li>
           <li><a href="#localizacao" class="nav__link">Localização</a></li>
           <li><a href="#contato-casa" class="nav__link nav__link--cta">Tenho Interesse</a></li>
         </ul>
@@ -61,159 +63,221 @@
       <p class="casa-hero__subtitle reveal">
         Casa recém-construída com alto padrão de acabamento, projeto contemporâneo e atenção a cada detalhe.
       </p>
-      <a href="#contato-casa" class="btn btn--primary btn--lg reveal">Agendar visita</a>
+      <div class="casa-hero__actions reveal">
+        <a href="#contato-casa" class="btn btn--primary btn--lg">Agendar visita</a>
+        <a href="#galeria" class="btn btn--outline btn--lg">Ver fotos</a>
+      </div>
     </div>
   </section>
 
-  <!-- ========== GALERIA ========== -->
-  <section class="section casa-galeria">
+  <!-- ========== SPECS RÁPIDOS ========== -->
+  <section class="casa-specs-bar">
     <div class="container">
+      <div class="casa-specs-bar__grid reveal">
+        <div class="casa-specs-bar__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18"/></svg>
+          <div>
+            <strong>—</strong>
+            <span>m² construídos</span>
+          </div>
+        </div>
+        <div class="casa-specs-bar__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          <div>
+            <strong>—</strong>
+            <span>Quartos / Suítes</span>
+          </div>
+        </div>
+        <div class="casa-specs-bar__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="12" width="20" height="8" rx="2"/><path d="M2 16h20"/><path d="M6 12V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/></svg>
+          <div>
+            <strong>—</strong>
+            <span>Banheiros</span>
+          </div>
+        </div>
+        <div class="casa-specs-bar__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><path d="M1 14h15"/></svg>
+          <div>
+            <strong>—</strong>
+            <span>Vagas</span>
+          </div>
+        </div>
+        <div class="casa-specs-bar__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <div>
+            <strong>2</strong>
+            <span>Pavimentos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALERIA DE FOTOS ========== -->
+  <section class="section casa-galeria" id="galeria">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label reveal">Galeria</span>
+        <h2 class="section__title section__title--center reveal">
+          Conheça cada<br>
+          <span class="accent">ambiente da casa.</span>
+        </h2>
+      </div>
+
+      <!-- Filtros -->
+      <div class="casa-galeria__filters reveal">
+        <button class="casa-galeria__filter active" data-filter="all">Todos</button>
+        <button class="casa-galeria__filter" data-filter="externa">Externa</button>
+        <button class="casa-galeria__filter" data-filter="interna">Interna</button>
+        <button class="casa-galeria__filter" data-filter="detalhe">Detalhes</button>
+      </div>
+
+      <!-- Grid de fotos -->
       <div class="casa-galeria__grid reveal">
-        <div class="casa-galeria__main">
-          <div class="image-placeholder casa-galeria__img casa-galeria__img--main">
+        <div class="casa-galeria__item" data-category="externa">
+          <div class="image-placeholder casa-galeria__img casa-galeria__img--tall">
             <div class="image-placeholder__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <polyline points="9,22 9,12 15,12 15,22"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
             </div>
             <span>Fachada principal</span>
           </div>
         </div>
-        <div class="casa-galeria__side">
+        <div class="casa-galeria__item" data-category="interna">
           <div class="image-placeholder casa-galeria__img">
             <div class="image-placeholder__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="6" width="20" height="12" rx="2"/>
-                <path d="M12 12h.01"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/></svg>
             </div>
             <span>Sala integrada</span>
           </div>
+        </div>
+        <div class="casa-galeria__item" data-category="interna">
           <div class="image-placeholder casa-galeria__img">
             <div class="image-placeholder__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <span>Cozinha americana</span>
+          </div>
+        </div>
+        <div class="casa-galeria__item" data-category="externa">
+          <div class="image-placeholder casa-galeria__img">
+            <div class="image-placeholder__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
             <span>Área gourmet</span>
           </div>
-          <div class="image-placeholder casa-galeria__img">
+        </div>
+        <div class="casa-galeria__item" data-category="interna">
+          <div class="image-placeholder casa-galeria__img casa-galeria__img--tall">
             <div class="image-placeholder__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 3v18M3 12h18"/>
-                <path d="M5 5l14 14M19 5L5 19"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="12" width="20" height="8" rx="2"/><path d="M2 16h20"/><path d="M6 12V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/></svg>
             </div>
             <span>Suíte master</span>
           </div>
+        </div>
+        <div class="casa-galeria__item" data-category="detalhe">
           <div class="image-placeholder casa-galeria__img">
             <div class="image-placeholder__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="12" width="20" height="8" rx="2"/>
-                <path d="M2 16h20"/>
-                <path d="M6 12V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18"/><path d="M5 5l14 14M19 5L5 19"/></svg>
             </div>
-            <span>Banheiro</span>
+            <span>Acabamento banheiro</span>
+          </div>
+        </div>
+        <div class="casa-galeria__item" data-category="detalhe">
+          <div class="image-placeholder casa-galeria__img">
+            <div class="image-placeholder__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span>Iluminação</span>
+          </div>
+        </div>
+        <div class="casa-galeria__item" data-category="externa">
+          <div class="image-placeholder casa-galeria__img">
+            <div class="image-placeholder__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg>
+            </div>
+            <span>Garagem</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="lightbox__content"></div>
+  </div>
+
   <!-- ========== SOBRE O IMÓVEL ========== -->
   <section class="section casa-sobre" id="sobre-imovel">
     <div class="container">
+      <div class="section__grid section__grid--2col">
+        <div class="casa-sobre__content">
+          <span class="section__label reveal">O Imóvel</span>
+          <h2 class="section__title reveal">
+            Cada detalhe pensado<br>
+            <span class="accent">para você e sua família.</span>
+          </h2>
+          <p class="section__text reveal">
+            Esta residência foi inteiramente projetada e construída pela BezerraRapoli, seguindo os mais altos padrões construtivos. A obra foi executada com controle rigoroso de qualidade em cada etapa, desde a fundação até os acabamentos finais.
+          </p>
+          <p class="section__text reveal">
+            Todos os materiais utilizados são de marcas reconhecidas no mercado, garantindo durabilidade, segurança e um acabamento impecável. A estrutura foi dimensionada seguindo normas técnicas vigentes com acompanhamento de engenharia em tempo integral.
+          </p>
+
+          <div class="casa-destaque reveal">
+            <div class="casa-destaque__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              <div>
+                <strong>Garantia construtiva</strong>
+                <span>Estrutura e acabamentos garantidos pela construtora</span>
+              </div>
+            </div>
+            <div class="casa-destaque__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg>
+              <div>
+                <strong>Documentação em dia</strong>
+                <span>Habite-se, IPTU e registro regularizados</span>
+              </div>
+            </div>
+            <div class="casa-destaque__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+              <div>
+                <strong>Aceita financiamento</strong>
+                <span>Compatível com financiamento bancário</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="casa-sobre__image reveal">
+          <div class="image-placeholder" style="height: 500px;">
+            <div class="image-placeholder__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+            </div>
+            <span>Vista lateral do imóvel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AMBIENTES ========== -->
+  <section class="section casa-ambientes-section" id="ambientes">
+    <div class="container">
       <div class="section__header">
-        <span class="section__label reveal">O Imóvel</span>
+        <span class="section__label reveal">Ambientes</span>
         <h2 class="section__title section__title--center reveal">
-          Cada detalhe pensado<br>
-          <span class="accent">para você e sua família.</span>
+          Distribuição inteligente<br>
+          <span class="accent">dos espaços.</span>
         </h2>
       </div>
 
-      <!-- Especificações -->
-      <div class="casa-specs reveal">
-        <div class="casa-spec">
-          <div class="casa-spec__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M3 12h18"/>
-            </svg>
-          </div>
-          <span class="casa-spec__value">—</span>
-          <span class="casa-spec__label">Área construída (m²)</span>
-        </div>
-        <div class="casa-spec">
-          <div class="casa-spec__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9,22 9,12 15,12 15,22"/>
-            </svg>
-          </div>
-          <span class="casa-spec__value">—</span>
-          <span class="casa-spec__label">Quartos / Suítes</span>
-        </div>
-        <div class="casa-spec">
-          <div class="casa-spec__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="12" width="20" height="8" rx="2"/>
-              <path d="M2 16h20"/>
-              <path d="M6 12V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/>
-            </svg>
-          </div>
-          <span class="casa-spec__value">—</span>
-          <span class="casa-spec__label">Banheiros</span>
-        </div>
-        <div class="casa-spec">
-          <div class="casa-spec__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="1" y="3" width="15" height="13" rx="2"/>
-              <path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/>
-              <path d="M1 14h15"/>
-            </svg>
-          </div>
-          <span class="casa-spec__value">—</span>
-          <span class="casa-spec__label">Vagas de garagem</span>
-        </div>
-        <div class="casa-spec">
-          <div class="casa-spec__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M9 3v18M3 9h18"/>
-            </svg>
-          </div>
-          <span class="casa-spec__value">—</span>
-          <span class="casa-spec__label">Terreno total (m²)</span>
-        </div>
-        <div class="casa-spec">
-          <div class="casa-spec__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <span class="casa-spec__value">2</span>
-          <span class="casa-spec__label">Pavimentos</span>
-        </div>
-      </div>
-
-      <!-- Descrição -->
-      <div class="casa-descricao reveal">
-        <div class="casa-descricao__col">
-          <h3>Sobre a Construção</h3>
-          <p>
-            Esta residência foi inteiramente projetada e construída pela BezerraRapoli, seguindo os mais altos padrões construtivos. A obra foi executada com controle rigoroso de qualidade em cada etapa, desde a fundação até os acabamentos finais.
-          </p>
-          <p>
-            Todos os materiais utilizados são de marcas reconhecidas no mercado, garantindo durabilidade, segurança e um acabamento impecável. A estrutura foi dimensionada seguindo normas técnicas vigentes com acompanhamento de engenharia em tempo integral.
-          </p>
-        </div>
-        <div class="casa-descricao__col">
-          <h3>Distribuição dos Ambientes</h3>
-          <ul class="casa-ambientes">
+      <div class="casa-ambientes-grid reveal">
+        <div class="casa-ambiente">
+          <div class="casa-ambiente__floor">Térreo</div>
+          <ul class="casa-ambiente__list">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
               Sala de estar e jantar integradas
@@ -228,10 +292,6 @@
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-              Suítes no pavimento superior
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
               Lavabo social
             </li>
             <li>
@@ -241,6 +301,27 @@
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
               Garagem coberta
+            </li>
+          </ul>
+        </div>
+        <div class="casa-ambiente">
+          <div class="casa-ambiente__floor">Pavimento Superior</div>
+          <ul class="casa-ambiente__list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+              Suíte master com closet
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+              Suíte 2 com banheiro privativo
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+              Hall de circulação
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+              Sacada com vista
             </li>
           </ul>
         </div>
@@ -322,7 +403,46 @@
     </div>
   </section>
 
-  <!-- ========== ANDAMENTO DA OBRA ========== -->
+  <!-- ========== PLANTA / TOUR VIRTUAL ========== -->
+  <section class="section casa-planta" id="planta">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label reveal">Planta</span>
+        <h2 class="section__title section__title--center reveal">
+          Conheça a planta<br>
+          <span class="accent">do imóvel.</span>
+        </h2>
+        <p class="section__subtitle reveal">
+          Projeto arquitetônico pensado para oferecer funcionalidade, conforto e circulação inteligente em cada pavimento.
+        </p>
+      </div>
+
+      <div class="casa-planta__grid reveal">
+        <div class="casa-planta__floor">
+          <div class="image-placeholder casa-planta__img">
+            <div class="image-placeholder__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg>
+            </div>
+            <span>Planta — Térreo</span>
+          </div>
+          <h4>Pavimento Térreo</h4>
+          <p>Áreas sociais integradas, cozinha funcional e acesso à área externa.</p>
+        </div>
+        <div class="casa-planta__floor">
+          <div class="image-placeholder casa-planta__img">
+            <div class="image-placeholder__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg>
+            </div>
+            <span>Planta — Superior</span>
+          </div>
+          <h4>Pavimento Superior</h4>
+          <p>Suítes amplas com privacidade e ventilação natural cruzada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATUS DA OBRA ========== -->
   <section class="section casa-progresso">
     <div class="container">
       <div class="section__header">
@@ -380,7 +500,7 @@
             <span class="accent">privilegiada.</span>
           </h2>
           <p class="section__text reveal">
-            Situada em uma região estratégica, com fácil acesso às principais vias, comércios, escolas e serviços essenciais. Um bairro tranquilo e seguro, perfeito para famílias que buscam qualidade de vida.
+            Situada em uma região estratégica, com fácil acesso às principais vias, comércios, escolas e serviços essenciais. Um bairro tranquilo e seguro, perfeito para famílias.
           </p>
           <ul class="casa-localizacao__features reveal">
             <li>
@@ -410,6 +530,67 @@
               </svg>
             </div>
             <span>Mapa da localização</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PERGUNTAS FREQUENTES ========== -->
+  <section class="section casa-faq">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label reveal">FAQ</span>
+        <h2 class="section__title section__title--center reveal">
+          Perguntas<br>
+          <span class="accent">frequentes.</span>
+        </h2>
+      </div>
+
+      <div class="casa-faq__list">
+        <div class="casa-faq__item reveal">
+          <button class="casa-faq__question">
+            A casa aceita financiamento bancário?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="casa-faq__answer">
+            <p>Sim. O imóvel está regularizado e é compatível com financiamento pelos principais bancos. Podemos auxiliar com toda a documentação necessária.</p>
+          </div>
+        </div>
+        <div class="casa-faq__item reveal">
+          <button class="casa-faq__question">
+            Qual a situação da documentação?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="casa-faq__answer">
+            <p>Toda a documentação está em dia — habite-se emitido, IPTU regularizado e registro no cartório de imóveis. Tudo pronto para transferência.</p>
+          </div>
+        </div>
+        <div class="casa-faq__item reveal">
+          <button class="casa-faq__question">
+            A casa possui garantia construtiva?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="casa-faq__answer">
+            <p>Sim. A BezerraRapoli oferece garantia sobre a estrutura e os acabamentos conforme as normas vigentes da construção civil.</p>
+          </div>
+        </div>
+        <div class="casa-faq__item reveal">
+          <button class="casa-faq__question">
+            Posso agendar uma visita ao imóvel?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="casa-faq__answer">
+            <p>Claro! Entre em contato pelo WhatsApp ou formulário e agendaremos uma visita no melhor horário para você. Sem compromisso.</p>
+          </div>
+        </div>
+        <div class="casa-faq__item reveal">
+          <button class="casa-faq__question">
+            Quais são as condições de pagamento?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="casa-faq__answer">
+            <p>Trabalhamos com flexibilidade. Aceitamos à vista, financiamento bancário e podemos discutir condições especiais de pagamento direto com a construtora.</p>
           </div>
         </div>
       </div>
@@ -462,7 +643,9 @@
         <h5>Esta Casa</h5>
         <ul>
           <li><a href="#sobre-imovel">O Imóvel</a></li>
+          <li><a href="#galeria">Galeria</a></li>
           <li><a href="#acabamentos">Acabamentos</a></li>
+          <li><a href="#planta">Planta</a></li>
           <li><a href="#localizacao">Localização</a></li>
           <li><a href="#contato-casa">Tenho interesse</a></li>
         </ul>
@@ -483,5 +666,32 @@
   </a>
 
   <script src="js/main.js"></script>
+  <script>
+    // Gallery filter
+    document.querySelectorAll('.casa-galeria__filter').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.casa-galeria__filter').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.casa-galeria__item').forEach(function(item) {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.casa-faq__question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.parentElement;
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.casa-faq__item').forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
 </body>
 </html>

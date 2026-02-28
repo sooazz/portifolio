@@ -4,6 +4,7 @@
 
 /* ---------- CSS Variables ---------- */
 :root {
+  /* Paleta Cimento Queimado */
   --color-black: #0a0a0a;
   --color-graphite: #1a1a1a;
   --color-dark: #2a2a2a;
@@ -13,6 +14,15 @@
   --color-gray-lighter: #e8e8e8;
   --color-off-white: #f5f5f3;
   --color-white: #ffffff;
+
+  /* Tons de concreto / cimento queimado */
+  --cement-dark: #5c5550;
+  --cement-medium: #8a817c;
+  --cement-light: #b5ada6;
+  --cement-surface: #d5cec7;
+  --cement-bg: #ebe7e2;
+  --cement-warm: #c4b8ab;
+
   --color-accent: #1B8A7A;
   --color-accent-dark: #14736A;
   --color-accent-light: #2AA89A;
@@ -133,6 +143,17 @@ ul {
   transform: translateY(-2px);
 }
 
+.btn--cement {
+  background-color: var(--cement-dark);
+  color: var(--color-white);
+}
+
+.btn--cement:hover {
+  background-color: var(--color-gray-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(92, 85, 80, 0.3);
+}
+
 .btn--full {
   width: 100%;
 }
@@ -156,7 +177,7 @@ ul {
 }
 
 .header.scrolled {
-  background-color: rgba(10, 10, 10, 0.95);
+  background-color: rgba(92, 85, 80, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -281,7 +302,7 @@ ul {
 }
 
 /* ============================================
-   HERO
+   HERO — Estilo Cimento Queimado
    ============================================ */
 .hero {
   position: relative;
@@ -289,7 +310,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+  background: linear-gradient(145deg, #6b6560 0%, #7a7370 30%, #5c5550 60%, #4a4440 100%);
   overflow: hidden;
 }
 
@@ -298,15 +319,25 @@ ul {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(27, 138, 122, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(27, 138, 122, 0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(27, 138, 122, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(196, 184, 171, 0.1) 0%, transparent 50%);
+  z-index: 1;
+}
+
+/* Textura de concreto sutil */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
   z-index: 1;
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(92, 85, 80, 0.2) 0%, rgba(74, 68, 64, 0.5) 100%);
   z-index: 2;
 }
 
@@ -348,7 +379,7 @@ ul {
 .hero__subtitle {
   font-size: clamp(1rem, 2vw, 1.125rem);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.65);
   max-width: 560px;
   margin: 0 auto 48px;
   line-height: 1.8;
@@ -454,10 +485,10 @@ ul {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  background: linear-gradient(145deg, #f0f0ee, #e8e8e4);
-  border: 1px solid var(--color-gray-lighter);
+  background: linear-gradient(145deg, var(--cement-bg), var(--cement-surface));
+  border: 1px solid var(--cement-surface);
   border-radius: 6px;
-  color: var(--color-gray-light);
+  color: var(--cement-medium);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -527,6 +558,160 @@ ul {
 }
 
 /* ============================================
+   SKETCH / BLUEPRINT ANIMATION
+   ============================================ */
+.sketch-section {
+  background: linear-gradient(160deg, var(--cement-bg) 0%, var(--cement-surface) 40%, var(--cement-bg) 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Textura sutil de concreto */
+.sketch-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+.sketch-section .section__header {
+  position: relative;
+  z-index: 1;
+}
+
+.sketch-section .section__title {
+  color: var(--cement-dark);
+}
+
+.sketch-section .section__subtitle {
+  color: var(--cement-medium);
+}
+
+/* SVG Canvas */
+.sketch-canvas {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.sketch-canvas svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Sketch line drawing animation */
+.sketch-line {
+  fill: none;
+  stroke: var(--cement-medium);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--dash-length, 1000);
+  stroke-dashoffset: var(--dash-length, 1000);
+  opacity: 0;
+  transition: none;
+}
+
+.sketch-line--rough {
+  stroke: var(--cement-light);
+  stroke-width: 0.8;
+  opacity: 0;
+}
+
+.sketch-line--accent {
+  stroke: var(--color-accent);
+  stroke-width: 2;
+}
+
+.sketch-line--fill {
+  stroke: none;
+  fill: var(--cement-surface);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.sketch-line--fill-accent {
+  stroke: none;
+  fill: rgba(27, 138, 122, 0.08);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* Animation states */
+.sketch-canvas.animate .sketch-line {
+  opacity: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset var(--draw-duration, 2s) cubic-bezier(0.4, 0, 0.2, 1) var(--draw-delay, 0s),
+              opacity 0.3s ease var(--draw-delay, 0s);
+}
+
+.sketch-canvas.animate .sketch-line--rough {
+  opacity: 0.5;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset var(--draw-duration, 1.5s) ease var(--draw-delay, 0s),
+              opacity 0.3s ease var(--draw-delay, 0s);
+}
+
+.sketch-canvas.animate .sketch-line--fill,
+.sketch-canvas.animate .sketch-line--fill-accent {
+  opacity: 1;
+  transition: opacity 0.8s ease var(--draw-delay, 0s);
+}
+
+/* Stage labels */
+.sketch-stages {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 48px auto 0;
+  position: relative;
+  z-index: 1;
+}
+
+.sketch-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.3;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.sketch-stage.active {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+.sketch-stage__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--cement-light);
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.sketch-stage.active .sketch-stage__dot {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 12px rgba(27, 138, 122, 0.4);
+}
+
+.sketch-stage__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cement-medium);
+  transition: color 0.5s ease;
+}
+
+.sketch-stage.active .sketch-stage__label {
+  color: var(--cement-dark);
+}
+
+/* ============================================
    MÉTODO
    ============================================ */
 .metodo {
@@ -592,175 +777,6 @@ ul {
   font-size: 0.9375rem;
   line-height: 1.75;
   color: var(--color-gray);
-}
-
-/* ============================================
-   BUILDING ANIMATION
-   ============================================ */
-.building-section {
-  background-color: var(--color-graphite);
-  overflow: hidden;
-}
-
-.building-section .section__title {
-  color: var(--color-white);
-}
-
-.building-section .section__subtitle {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.building-anim {
-  position: relative;
-  max-width: 500px;
-  margin: 0 auto;
-  padding-bottom: 40px;
-}
-
-/* Ground line */
-.building-anim__ground {
-  position: absolute;
-  bottom: 30px;
-  left: -40px;
-  right: -40px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-  opacity: 0.4;
-}
-
-/* House container */
-.building-anim__house {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  padding-bottom: 8px;
-}
-
-/* Row of blocks */
-.building-anim__row {
-  display: flex;
-  gap: 3px;
-  margin-bottom: 3px;
-}
-
-.building-anim__row--foundation .building-anim__block {
-  background-color: var(--color-gray-dark);
-  height: 20px;
-}
-
-/* Individual block */
-.building-anim__block {
-  width: 48px;
-  height: 32px;
-  background-color: var(--color-dark);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 2px;
-  opacity: 0;
-  transform: translateY(-80px) translateX(var(--from-x, 0px)) rotate(5deg);
-  transition: none;
-}
-
-.building-anim__block.dropped {
-  opacity: 1;
-  transform: translateY(0) translateX(0) rotate(0deg);
-  transition: opacity 0.4s ease-out,
-              transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Window blocks */
-.building-anim__block--window {
-  background: linear-gradient(145deg, rgba(27, 138, 122, 0.15), rgba(27, 138, 122, 0.05));
-  border-color: rgba(27, 138, 122, 0.2);
-  box-shadow: inset 0 0 8px rgba(27, 138, 122, 0.1);
-}
-
-.building-anim__block--window.dropped {
-  box-shadow: inset 0 0 12px rgba(27, 138, 122, 0.15),
-              0 0 8px rgba(27, 138, 122, 0.05);
-}
-
-/* Roof */
-.building-anim__roof {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 3px;
-  width: 100%;
-}
-
-.building-anim__roof-left,
-.building-anim__roof-right {
-  width: 200px;
-  height: 0;
-  border-bottom: 50px solid var(--color-accent-dark);
-  opacity: 0;
-  transform: translateY(-60px);
-  transition: none;
-}
-
-.building-anim__roof-left {
-  border-left: 10px solid transparent;
-  border-right: 0;
-  border-radius: 4px 0 0 0;
-  transform-origin: right bottom;
-}
-
-.building-anim__roof-right {
-  border-right: 10px solid transparent;
-  border-left: 0;
-  border-radius: 0 4px 0 0;
-  transform-origin: left bottom;
-}
-
-.building-anim__roof-left.dropped,
-.building-anim__roof-right.dropped {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s ease-out,
-              transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Labels */
-.building-anim__labels {
-  display: flex;
-  justify-content: space-between;
-  max-width: 420px;
-  margin: 48px auto 0;
-}
-
-.building-anim__label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
-  transition: color 0.5s ease;
-}
-
-.building-anim__label.active {
-  color: var(--color-accent);
-}
-
-.building-anim__label-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--color-gray-dark);
-  transition: background-color 0.5s ease, box-shadow 0.5s ease;
-}
-
-.building-anim__label.active .building-anim__label-dot {
-  background-color: var(--color-accent);
-  box-shadow: 0 0 8px rgba(27, 138, 122, 0.5);
-}
-
-/* Projeto buttons */
-.projeto__buttons {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
 }
 
 /* ============================================
@@ -841,11 +857,17 @@ ul {
   flex-shrink: 0;
 }
 
+.projeto__buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 /* ============================================
    DIFERENCIAIS
    ============================================ */
 .diferenciais {
-  background-color: var(--color-off-white);
+  background-color: var(--cement-bg);
 }
 
 .diferenciais__list {
@@ -893,10 +915,10 @@ ul {
 }
 
 /* ============================================
-   CTA
+   CTA — Estilo Cimento Queimado
    ============================================ */
 .cta {
-  background: linear-gradient(135deg, var(--color-graphite) 0%, var(--color-black) 100%);
+  background: linear-gradient(145deg, #6b6560 0%, #5c5550 40%, #4a4440 100%);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -906,7 +928,16 @@ ul {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(27, 138, 122, 0.06) 0%, transparent 70%);
+  background:
+    radial-gradient(ellipse at center, rgba(27, 138, 122, 0.06) 0%, transparent 70%);
+}
+
+.cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.3;
 }
 
 .cta__inner {
@@ -927,7 +958,7 @@ ul {
 
 .cta__text {
   font-size: 1.0625rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.55);
   line-height: 1.8;
   margin-bottom: 40px;
 }
@@ -1021,18 +1052,33 @@ ul {
   color: #c62828;
 }
 
-/* Contact Info */
+/* Contact Info — Cimento Queimado */
 .contato__card {
-  background: linear-gradient(145deg, var(--color-graphite), var(--color-black));
+  background: linear-gradient(145deg, #6b6560, #5c5550);
   padding: 48px 40px;
   color: var(--color-white);
   border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contato__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.3;
 }
 
 .contato__card h4 {
   font-size: 1.125rem;
   font-weight: 700;
   margin-bottom: 32px;
+  position: relative;
+}
+
+.contato__details {
+  position: relative;
 }
 
 .contato__details li {
@@ -1057,6 +1103,7 @@ ul {
   margin-top: 40px;
   padding-top: 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
 .social-link {
@@ -1082,11 +1129,12 @@ ul {
 }
 
 /* ============================================
-   FOOTER
+   FOOTER — Cimento escuro
    ============================================ */
 .footer {
-  background-color: var(--color-black);
+  background-color: #3a3530;
   padding: 80px 0 0;
+  position: relative;
 }
 
 .footer__inner {
@@ -1227,7 +1275,7 @@ ul {
     right: -100%;
     width: 100%;
     height: 100vh;
-    background-color: rgba(10, 10, 10, 0.98);
+    background-color: rgba(58, 53, 48, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     display: flex;
@@ -1298,6 +1346,16 @@ ul {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .sketch-stages {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .projeto__buttons {
+    flex-direction: column;
+  }
+
   .form__row {
     grid-template-columns: 1fr;
   }
@@ -1322,33 +1380,6 @@ ul {
 
   .image-placeholder--projeto-sm {
     height: 100px;
-  }
-}
-
-  /* Building animation responsive */
-  .building-anim__block {
-    width: 36px;
-    height: 24px;
-  }
-
-  .building-anim__row--foundation .building-anim__block {
-    height: 16px;
-  }
-
-  .building-anim__roof-left,
-  .building-anim__roof-right {
-    width: 150px;
-    border-bottom-width: 38px;
-  }
-
-  .building-anim__labels {
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-  }
-
-  .projeto__buttons {
-    flex-direction: column;
   }
 }
 
