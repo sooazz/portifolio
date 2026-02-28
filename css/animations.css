@@ -1,0 +1,374 @@
+/* ============================================
+   Animações de fundo — Construção em movimento
+   ============================================ */
+
+/* ---------- Container base ---------- */
+.bg-anim {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Garantir que seções com animação tenham position relative */
+.sobre,
+.projeto,
+.contato,
+.metodo,
+.diferenciais,
+.galeria,
+.depoimentos,
+.faq {
+  position: relative;
+}
+
+/* Conteúdo acima das animações */
+.sobre > .container,
+.projeto > .container,
+.contato > .container,
+.metodo > .container,
+.diferenciais > .container,
+.galeria > .container,
+.depoimentos > .container,
+.faq > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Grid Blueprint (seções brancas) ---------- */
+.bg-anim--blueprint {
+  background-image:
+    linear-gradient(90deg, rgba(181, 173, 166, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(181, 173, 166, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridShift 30s linear infinite;
+}
+
+@keyframes gridShift {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+/* ---------- Linhas diagonais de hachura (seções off-white/cement) ---------- */
+.bg-anim--hatch {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(181, 173, 166, 0.04) 40px,
+      rgba(181, 173, 166, 0.04) 41px
+    );
+  animation: hatchDrift 25s linear infinite;
+}
+
+@keyframes hatchDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: 80px 80px; }
+}
+
+/* ---------- Régua / Marcas de medida nas bordas ---------- */
+.bg-anim__ruler-top,
+.bg-anim__ruler-left {
+  position: absolute;
+  z-index: 0;
+}
+
+.bg-anim__ruler-top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 59px,
+    rgba(181, 173, 166, 0.12) 59px,
+    rgba(181, 173, 166, 0.12) 60px
+  );
+  animation: rulerSlideH 20s linear infinite;
+}
+
+.bg-anim__ruler-left {
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent,
+    transparent 59px,
+    rgba(181, 173, 166, 0.12) 59px,
+    rgba(181, 173, 166, 0.12) 60px
+  );
+  animation: rulerSlideV 20s linear infinite;
+}
+
+/* Marcas maiores a cada 5 unidades */
+.bg-anim__ruler-top::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 299px,
+    rgba(27, 138, 122, 0.08) 299px,
+    rgba(27, 138, 122, 0.08) 300px
+  );
+  animation: rulerSlideH 20s linear infinite;
+}
+
+.bg-anim__ruler-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent,
+    transparent 299px,
+    rgba(27, 138, 122, 0.08) 299px,
+    rgba(27, 138, 122, 0.08) 300px
+  );
+  animation: rulerSlideV 20s linear infinite;
+}
+
+@keyframes rulerSlideH {
+  0% { background-position: 0 0; }
+  100% { background-position: 300px 0; }
+}
+
+@keyframes rulerSlideV {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 300px; }
+}
+
+/* ---------- Traço animado SVG (linha desenhando-se) ---------- */
+.bg-anim__trace {
+  position: absolute;
+  opacity: 0.06;
+}
+
+.bg-anim__trace line,
+.bg-anim__trace path {
+  stroke: var(--cement-medium);
+  stroke-width: 1;
+  fill: none;
+  stroke-linecap: round;
+}
+
+/* Traço horizontal que se desenha e some */
+.bg-trace-h {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: traceDraw 6s ease-in-out infinite;
+}
+
+/* Traço vertical */
+.bg-trace-v {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  animation: traceDraw 7s ease-in-out infinite;
+}
+
+/* Traço diagonal */
+.bg-trace-d {
+  stroke-dasharray: 250;
+  stroke-dashoffset: 250;
+  animation: traceDraw 8s ease-in-out infinite;
+}
+
+/* Ângulo reto (esquadro) */
+.bg-trace-angle {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation: traceDraw 5s ease-in-out infinite;
+}
+
+@keyframes traceDraw {
+  0% { stroke-dashoffset: 200; opacity: 0; }
+  10% { opacity: 1; }
+  50% { stroke-dashoffset: 0; opacity: 1; }
+  90% { opacity: 1; }
+  100% { stroke-dashoffset: -200; opacity: 0; }
+}
+
+/* ---------- Partículas flutuantes (tijolos/blocos) ---------- */
+.bg-particle {
+  position: absolute;
+  border: 1px solid rgba(181, 173, 166, 0.15);
+  border-radius: 1px;
+  opacity: 0;
+  animation: particleFloat var(--duration, 12s) var(--delay, 0s) ease-in-out infinite;
+}
+
+.bg-particle--brick {
+  width: var(--w, 24px);
+  height: var(--h, 10px);
+  background-color: rgba(196, 184, 171, 0.06);
+}
+
+.bg-particle--square {
+  width: var(--size, 14px);
+  height: var(--size, 14px);
+  background-color: transparent;
+  border-color: rgba(27, 138, 122, 0.08);
+}
+
+.bg-particle--line {
+  width: var(--w, 40px);
+  height: 1px;
+  background-color: rgba(181, 173, 166, 0.1);
+  border: none;
+  transform: rotate(var(--rot, 0deg));
+}
+
+.bg-particle--angle {
+  width: var(--size, 20px);
+  height: var(--size, 20px);
+  background: none;
+  border: none;
+  border-left: 1px solid rgba(181, 173, 166, 0.1);
+  border-bottom: 1px solid rgba(181, 173, 166, 0.1);
+  transform: rotate(var(--rot, 0deg));
+}
+
+@keyframes particleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(var(--start-y, 20px)) translateX(0) rotate(var(--rot, 0deg));
+  }
+  15% {
+    opacity: var(--max-opacity, 0.6);
+  }
+  50% {
+    transform: translateY(calc(var(--start-y, 20px) - var(--travel, 60px))) translateX(var(--drift, 10px)) rotate(calc(var(--rot, 0deg) + var(--spin, 5deg)));
+  }
+  85% {
+    opacity: var(--max-opacity, 0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(calc(var(--start-y, 20px) - var(--travel, 120px))) translateX(calc(var(--drift, 10px) * -1)) rotate(calc(var(--rot, 0deg) + var(--spin, 10deg)));
+  }
+}
+
+/* ---------- Linhas de cota flutuantes ---------- */
+.bg-anim__cota {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  animation: cotaAppear var(--duration, 8s) var(--delay, 0s) ease-in-out infinite;
+}
+
+.bg-anim__cota-line {
+  width: var(--line-w, 60px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(181, 173, 166, 0.12), transparent);
+}
+
+.bg-anim__cota-mark {
+  width: 1px;
+  height: 8px;
+  background-color: rgba(181, 173, 166, 0.15);
+}
+
+.bg-anim__cota-text {
+  font-family: var(--font-primary);
+  font-size: 8px;
+  font-weight: 500;
+  color: rgba(181, 173, 166, 0.15);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+@keyframes cotaAppear {
+  0%, 100% { opacity: 0; transform: translateX(-10px); }
+  20% { opacity: 1; transform: translateX(0); }
+  80% { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------- Formas geométricas flutuantes ---------- */
+.bg-anim__shape {
+  position: absolute;
+  opacity: 0;
+  animation: shapeFloat var(--duration, 15s) var(--delay, 0s) ease-in-out infinite;
+}
+
+.bg-anim__shape--triangle {
+  width: 0;
+  height: 0;
+  border-left: var(--size, 12px) solid transparent;
+  border-right: var(--size, 12px) solid transparent;
+  border-bottom: calc(var(--size, 12px) * 1.7) solid rgba(27, 138, 122, 0.04);
+}
+
+.bg-anim__shape--cross {
+  width: var(--size, 16px);
+  height: var(--size, 16px);
+  position: relative;
+}
+
+.bg-anim__shape--cross::before,
+.bg-anim__shape--cross::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(181, 173, 166, 0.1);
+}
+
+.bg-anim__shape--cross::before {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.bg-anim__shape--cross::after {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+@keyframes shapeFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg) scale(0.8);
+  }
+  20% { opacity: 1; }
+  50% {
+    transform: translateY(var(--travel, -30px)) rotate(var(--spin, 45deg)) scale(1);
+  }
+  80% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translateY(calc(var(--travel, -30px) * 2)) rotate(calc(var(--spin, 45deg) * 2)) scale(0.8);
+  }
+}
+
+/* ---------- Disable on mobile for performance ---------- */
+@media (max-width: 768px) {
+  .bg-anim__trace,
+  .bg-anim__cota,
+  .bg-anim__shape,
+  .bg-particle {
+    display: none;
+  }
+
+  .bg-anim--blueprint {
+    animation-duration: 60s;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .bg-anim,
+  .bg-anim * {
+    animation: none !important;
+  }
+}

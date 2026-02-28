@@ -211,6 +211,128 @@
     checkSketchInView();
   }
 
+  // ---------- Construction Particle System ----------
+  var bgAnimContainers = document.querySelectorAll('.bg-anim');
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobile = window.innerWidth <= 768;
+
+  if (bgAnimContainers.length > 0 && !prefersReducedMotion && !isMobile) {
+
+    var particleConfigs = [
+      { cls: 'bg-particle--brick', props: { '--w': ['18px','24px','30px'], '--h': ['8px','10px','12px'] } },
+      { cls: 'bg-particle--square', props: { '--size': ['10px','14px','18px'] } },
+      { cls: 'bg-particle--line', props: { '--w': ['30px','40px','55px'], '--rot': ['0deg','25deg','45deg','-15deg','90deg'] } },
+      { cls: 'bg-particle--angle', props: { '--size': ['16px','20px','24px'], '--rot': ['0deg','45deg','90deg','135deg'] } }
+    ];
+
+    function randomFrom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function randomBetween(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function spawnParticles(container) {
+      var count = randomBetween(4, 7);
+      for (var i = 0; i < count; i++) {
+        var config = randomFrom(particleConfigs);
+        var particle = document.createElement('div');
+        particle.className = 'bg-particle ' + config.cls;
+
+        // Random position
+        particle.style.left = randomBetween(5, 90) + '%';
+        particle.style.top = randomBetween(10, 85) + '%';
+
+        // Set CSS custom props
+        var keys = Object.keys(config.props);
+        for (var k = 0; k < keys.length; k++) {
+          particle.style.setProperty(keys[k], randomFrom(config.props[keys[k]]));
+        }
+
+        // Randomize animation variables
+        particle.style.setProperty('--duration', randomBetween(10, 22) + 's');
+        particle.style.setProperty('--delay', randomBetween(0, 10) + 's');
+        particle.style.setProperty('--start-y', randomBetween(10, 40) + 'px');
+        particle.style.setProperty('--travel', randomBetween(40, 100) + 'px');
+        particle.style.setProperty('--drift', randomBetween(-15, 15) + 'px');
+        particle.style.setProperty('--spin', randomBetween(-10, 10) + 'deg');
+        particle.style.setProperty('--max-opacity', (Math.random() * 0.4 + 0.3).toFixed(2));
+
+        container.appendChild(particle);
+      }
+    }
+
+    bgAnimContainers.forEach(function (container) {
+      spawnParticles(container);
+    });
+  }
+
+  // ---------- Number Counter Animation ----------
+  var counterValues = document.querySelectorAll('.numeros__value');
+  var counterStarted = false;
+
+  function animateCounters() {
+    if (counterStarted) return;
+    var numerosSection = document.querySelector('.numeros');
+    if (!numerosSection) return;
+
+    var rect = numerosSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      counterStarted = true;
+
+      counterValues.forEach(function (el) {
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        var duration = 2000;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target);
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = target;
+          }
+        }
+
+        requestAnimationFrame(step);
+      });
+    }
+  }
+
+  if (counterValues.length > 0) {
+    window.addEventListener('scroll', animateCounters, { passive: true });
+    animateCounters();
+  }
+
+  // ---------- FAQ Accordion ----------
+  var faqItems = document.querySelectorAll('.faq__item');
+
+  faqItems.forEach(function (item) {
+    var question = item.querySelector('.faq__question');
+    if (question) {
+      question.addEventListener('click', function () {
+        var isOpen = item.classList.contains('open');
+
+        // Close all other items
+        faqItems.forEach(function (other) {
+          other.classList.remove('open');
+          var otherBtn = other.querySelector('.faq__question');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle current
+        if (!isOpen) {
+          item.classList.add('open');
+          question.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+  });
+
   // ---------- Casa.html: Photo Gallery Lightbox ----------
   var galleryItems = document.querySelectorAll('.casa-galeria__item');
   var lightbox = document.getElementById('lightbox');
