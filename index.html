@@ -26,6 +26,13 @@
 </head>
 <body>
 
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
   <!-- ========== HEADER / NAV ========== -->
   <header class="header" id="header">
     <div class="container header__inner">
@@ -59,22 +66,30 @@
     <div class="hero__overlay"></div>
     <div class="container hero__content">
       <div class="hero__badge reveal">Construtora de Alto Padrão</div>
-      <h1 class="hero__title reveal">
-        Construindo com precisão.<br>
-        <span class="hero__title--accent">Entregando com excelência.</span>
+      <h1 class="hero__title" id="hero-title">
+        <span class="split-word">Construindo</span> <span class="split-word">com</span> <span class="split-word">precisão.</span><br>
+        <span class="hero__title--accent"><span class="split-word">Entregando</span> <span class="split-word">com</span> <span class="split-word">excelência.</span></span>
       </h1>
       <p class="hero__subtitle reveal">
         Projetos residenciais com alto padrão de execução e compromisso absoluto com qualidade.
       </p>
-      <a href="#contato" class="btn btn--primary reveal">Solicitar orçamento</a>
+      <a href="#contato" class="btn btn--primary btn--magnetic reveal">Solicitar orçamento</a>
     </div>
     <div class="hero__scroll">
       <span></span>
     </div>
   </section>
 
+  <!-- ========== MARQUEE BAND ========== -->
+  <div class="marquee">
+    <div class="marquee__track">
+      <span class="marquee__content">PRECISÃO &mdash; QUALIDADE &mdash; EXCELÊNCIA &mdash; COMPROMISSO &mdash; ALTO PADRÃO &mdash; ENGENHARIA &mdash; PRECISÃO &mdash; QUALIDADE &mdash; EXCELÊNCIA &mdash; COMPROMISSO &mdash; ALTO PADRÃO &mdash; ENGENHARIA &mdash; PRECISÃO &mdash; QUALIDADE &mdash; EXCELÊNCIA &mdash; COMPROMISSO &mdash; ALTO PADRÃO &mdash; ENGENHARIA &mdash;</span>
+    </div>
+  </div>
+
   <!-- ========== SOBRE ========== -->
   <section class="section sobre" id="sobre">
+    <span class="watermark" data-parallax="-0.08">SOBRE</span>
     <!-- Background animation -->
     <div class="bg-anim bg-anim--blueprint">
       <div class="bg-anim__ruler-top"></div>
@@ -329,6 +344,7 @@
 
   <!-- ========== MÉTODO ========== -->
   <section class="section metodo" id="metodo">
+    <span class="watermark" data-parallax="0.06">MÉTODO</span>
     <!-- Background animation -->
     <div class="bg-anim bg-anim--hatch">
       <div class="bg-anim__ruler-top"></div>
@@ -423,6 +439,7 @@
 
   <!-- ========== PROJETO EM EXECUÇÃO ========== -->
   <section class="section projeto" id="projeto">
+    <span class="watermark" data-parallax="-0.05">PROJETO</span>
     <!-- Background animation -->
     <div class="bg-anim bg-anim--blueprint">
       <div class="bg-anim__ruler-left"></div>
@@ -641,6 +658,7 @@
 
   <!-- ========== DIFERENCIAIS ========== -->
   <section class="section diferenciais" id="diferenciais">
+    <span class="watermark watermark--right" data-parallax="0.07">DIFERENCIAL</span>
     <!-- Background animation -->
     <div class="bg-anim bg-anim--hatch">
       <div class="bg-anim__ruler-top"></div>
@@ -854,9 +872,16 @@
       <p class="cta__text reveal">
         Entre em contato com nossa equipe e descubra como a BezerraRapoli pode dar vida ao seu projeto com qualidade, precisão e compromisso.
       </p>
-      <a href="#contato" class="btn btn--primary btn--lg reveal">Falar com a BezerraRapoli</a>
+      <a href="#contato" class="btn btn--primary btn--lg btn--magnetic reveal">Falar com a BezerraRapoli</a>
     </div>
   </section>
+
+  <!-- ========== MARQUEE BAND 2 ========== -->
+  <div class="marquee marquee--reverse">
+    <div class="marquee__track marquee__track--reverse">
+      <span class="marquee__content">CONSTRUÇÃO &mdash; ACABAMENTO &mdash; SOLIDEZ &mdash; DESIGN &mdash; INOVAÇÃO &mdash; PROJETO &mdash; CONSTRUÇÃO &mdash; ACABAMENTO &mdash; SOLIDEZ &mdash; DESIGN &mdash; INOVAÇÃO &mdash; PROJETO &mdash; CONSTRUÇÃO &mdash; ACABAMENTO &mdash; SOLIDEZ &mdash; DESIGN &mdash; INOVAÇÃO &mdash; PROJETO &mdash;</span>
+    </div>
+  </div>
 
   <!-- ========== FAQ ========== -->
   <section class="section faq" id="faq">

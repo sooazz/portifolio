@@ -369,6 +369,130 @@
     }
   });
 
+  // ---------- Custom Cursor ----------
+  var cursor = document.getElementById('cursor');
+  var cursorRing = document.getElementById('cursor-ring');
+
+  if (cursor && cursorRing && !isMobile && window.matchMedia('(hover: hover)').matches) {
+    var mouseX = 0, mouseY = 0;
+    var ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', function (e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+
+    // Smooth ring follow
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Hover states
+    var hoverTargets = document.querySelectorAll('a, button, .btn, .card, .galeria__item, .faq__question');
+    hoverTargets.forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        cursor.classList.add('cursor--hover');
+        cursorRing.classList.add('cursor-ring--hover');
+      });
+      el.addEventListener('mouseleave', function () {
+        cursor.classList.remove('cursor--hover');
+        cursorRing.classList.remove('cursor-ring--hover');
+      });
+    });
+
+    // Text hover for section titles
+    var textTargets = document.querySelectorAll('.section__title, .hero__title, .cta__title');
+    textTargets.forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        cursor.classList.add('cursor--text');
+        cursorRing.classList.add('cursor-ring--text');
+      });
+      el.addEventListener('mouseleave', function () {
+        cursor.classList.remove('cursor--text');
+        cursorRing.classList.remove('cursor-ring--text');
+      });
+    });
+
+    // Hide system cursor
+    document.body.style.cursor = 'none';
+    hoverTargets.forEach(function (el) { el.style.cursor = 'none'; });
+    textTargets.forEach(function (el) { el.style.cursor = 'none'; });
+  }
+
+  // ---------- Scroll Progress Bar ----------
+  var scrollProgress = document.getElementById('scroll-progress');
+
+  if (scrollProgress) {
+    function updateScrollProgress() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var percent = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = percent + '%';
+    }
+
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
+  }
+
+  // ---------- Hero Split Text Animation ----------
+  var splitWords = document.querySelectorAll('.split-word');
+
+  if (splitWords.length > 0) {
+    splitWords.forEach(function (word, index) {
+      setTimeout(function () {
+        word.classList.add('visible');
+      }, 300 + (index * 120));
+    });
+  }
+
+  // ---------- Magnetic Buttons ----------
+  var magneticBtns = document.querySelectorAll('.btn--magnetic');
+
+  if (magneticBtns.length > 0 && !isMobile) {
+    magneticBtns.forEach(function (btn) {
+      btn.addEventListener('mousemove', function (e) {
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.2) + 'px, ' + (y * 0.3) + 'px)';
+      });
+
+      btn.addEventListener('mouseleave', function () {
+        btn.style.transform = 'translate(0, 0)';
+        btn.style.transition = 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+        setTimeout(function () {
+          btn.style.transition = '';
+        }, 400);
+      });
+    });
+  }
+
+  // ---------- Parallax Watermarks on Scroll ----------
+  var watermarks = document.querySelectorAll('[data-parallax]');
+
+  if (watermarks.length > 0 && !isMobile && !prefersReducedMotion) {
+    function updateParallax() {
+      var scrollY = window.pageYOffset;
+
+      watermarks.forEach(function (el) {
+        var speed = parseFloat(el.getAttribute('data-parallax'));
+        var rect = el.parentElement.getBoundingClientRect();
+        var offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * speed;
+        el.style.transform = 'translateY(calc(-50% + ' + offset + 'px))';
+      });
+    }
+
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    updateParallax();
+  }
+
   // ---------- Casa.html: Photo Gallery Lightbox ----------
   var galleryItems = document.querySelectorAll('.casa-galeria__item');
   var lightbox = document.getElementById('lightbox');
