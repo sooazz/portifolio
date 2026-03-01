@@ -268,6 +268,42 @@
     });
   }
 
+  // ---------- Pulsing Grid Squares ----------
+  if (!prefersReducedMotion && !isMobile) {
+    var blueprintContainers = document.querySelectorAll('.bg-anim--blueprint');
+
+    blueprintContainers.forEach(function (container) {
+      var containerRect = container.parentElement.getBoundingClientRect();
+      var cols = Math.floor(containerRect.width / 60);
+      var rows = Math.floor(containerRect.height / 60);
+      var totalCells = cols * rows;
+
+      // Pick 6-10 random grid cells to pulse
+      var pulseCount = Math.min(randomBetween(6, 10), totalCells);
+      var usedCells = {};
+
+      for (var i = 0; i < pulseCount; i++) {
+        var cellIndex;
+        do {
+          cellIndex = randomBetween(0, totalCells - 1);
+        } while (usedCells[cellIndex]);
+        usedCells[cellIndex] = true;
+
+        var col = cellIndex % cols;
+        var row = Math.floor(cellIndex / cols);
+
+        var square = document.createElement('div');
+        square.className = 'bg-anim__pulse-square';
+        square.style.left = (col * 60) + 'px';
+        square.style.top = (row * 60) + 'px';
+        square.style.setProperty('--pulse-duration', randomBetween(3, 7) + 's');
+        square.style.setProperty('--pulse-delay', (Math.random() * 8).toFixed(1) + 's');
+
+        container.appendChild(square);
+      }
+    });
+  }
+
   // ---------- Number Counter Animation ----------
   var counterValues = document.querySelectorAll('.numeros__value');
   var counterStarted = false;

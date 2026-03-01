@@ -50,6 +50,52 @@
   100% { background-position: 60px 60px; }
 }
 
+/* ---------- Quadrados pulsando no grid (teal glow) ---------- */
+.bg-anim__pulse-square {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bg-anim__pulse-square::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid rgba(27, 138, 122, 0);
+  background: rgba(27, 138, 122, 0);
+  transition: none;
+  animation: squarePulse var(--pulse-duration, 4s) var(--pulse-delay, 0s) ease-in-out infinite;
+}
+
+@keyframes squarePulse {
+  0%, 100% {
+    border-color: rgba(27, 138, 122, 0);
+    background-color: rgba(27, 138, 122, 0);
+    box-shadow: none;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+    border-color: rgba(27, 138, 122, 0.2);
+    background-color: rgba(27, 138, 122, 0.03);
+    box-shadow: 0 0 12px rgba(27, 138, 122, 0.08);
+  }
+  50% {
+    opacity: 1;
+    border-color: rgba(27, 138, 122, 0.35);
+    background-color: rgba(27, 138, 122, 0.06);
+    box-shadow: 0 0 20px rgba(27, 138, 122, 0.12), inset 0 0 10px rgba(27, 138, 122, 0.04);
+  }
+  70% {
+    opacity: 1;
+    border-color: rgba(27, 138, 122, 0.2);
+    background-color: rgba(27, 138, 122, 0.03);
+    box-shadow: 0 0 12px rgba(27, 138, 122, 0.08);
+  }
+}
+
 /* ---------- Linhas diagonais de hachura (seções off-white/cement) ---------- */
 .bg-anim--hatch {
   background-image:
@@ -356,7 +402,8 @@
   .bg-anim__trace,
   .bg-anim__cota,
   .bg-anim__shape,
-  .bg-particle {
+  .bg-particle,
+  .bg-anim__pulse-square {
     display: none;
   }
 
